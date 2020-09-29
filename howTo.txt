@@ -1,0 +1,45 @@
+How to instruction for ShopList and logger module
+
+Base information:
+*Use node.js in v12.x
+*Use web socket interface
+*Server log in log.txt
+*Database engine is Sqlite 3
+*Database file path ./db/db.sqlite
+*Database initial sql:
+
+CREATE TABLE productList (
+    id       INTEGER  PRIMARY KEY
+                      NOT NULL
+                      UNIQUE,
+    product  DATETIME NOT NULL,
+    quantity NUMERIC  NOT NULL
+);
+
+Architecture:
+ShopList have 2 application - frontend and server.
+Server use node.js. Frontend use js and bootstrap.
+
+How to run server:
+1.Require file for server: app.js, loger.js, package.json, logConfig.json, database file in right path
+2.Create sqlite database in path ./db/db.sqlite
+3.Run initial SQL
+4.Run npm install
+5.In variable 'port' in app.js add right port for websocket (e.g 3000)
+6.Run node app
+7.Check log.txt for looking error during startup
+
+How to run frontend:
+1.Require file for frontend: index.html, js directory
+2.In /js/script.js in variable 'serverUrl' add server url with right port, server use websocket protocol so url is start from ws:// (e.g. ws://localhost:3000)
+3.Open index.html in web browser and check console in developer tools for looking error during connection to server
+
+
+Wht is loger.js?
+Loger is light engine for loging message form application. Logs are in path ./log.txt. Log file is created automatic on demand.
+Newest log row is the last row in log.txt.
+Configuration for log engine are in logConfig.json. Config file must be in the same directory as loger.js.
+Config parameter: consolePrint - value "true" - show all log message in system console, "false" - log message are not print in system console
+logLevel - value "error" - engine save only error log, "warning" - engine save only warning and error log,
+"info" - engine save only info message, "all" - engine save all log message
+If console print is running engine show all message  regardless to logLevel.
