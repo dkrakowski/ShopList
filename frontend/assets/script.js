@@ -43,7 +43,7 @@ var addProductPosition = function (product, quantity, productID) {
 
     var msgBox = document.getElementById('shoppListBox');
     console.log("Added id: " + productID);
-    msgBox.innerHTML += "<li id='" + productID +"'>" + "<label><input type='checkbox' name='checkbox' id='" + productID + "' >" + product + " | ilość: " + quantity + "</label></li>";
+    msgBox.innerHTML += "<li id='" + productID +"' >" + "<label><input type='checkbox' name='checkbox' id='" + productID + "' >" + product + " | ilość: " + quantity + "</label></li>";
 }
 
 //Delete product row function
